@@ -1,22 +1,25 @@
 @import url("sidebar.css");
 
 :root {
+  --bg: #181818a8;
   --toolbar-field-focus-border-color: transparent !important;
-  --urlbar-background-color: #201929;
-
+  --urlbar-background-color: #00000055;
+  --tabpanel-background-color: var(--bg) !important;
+  --urlbar-min-height: 40px;
 }
 
-:root[privatebrowsingmode="temporary"] {
-  --urlbar-background-color: #25003E;
+* {
+  font-family: "'Inter Variable'", "Inter", "'Roboto Sans'", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
 }
-
 
 /* Clean Urlbar */
 
 #urlbar,
 #searchbar {
-  font-size: 13px !important;
-  margin-top: 1px !important;
+  /*   font-size: 13px !important; */
+  /*   margin-top: 1px !important; */
 }
 
 #urlbar-background,
@@ -240,4 +243,410 @@ findbar checkbox[checked="true"] {
   [place="panel"])>#zoom-controls,
 :is(panelview, #widget-overflow-fixed-list) .toolbaritem-combined-buttons {
   margin: 0px !important;
+}
+
+/*******************************************************************************/
+
+#main-window {
+  background: var(--bg) !important;
+}
+
+/*current tab*/
+tab.tabbrowser-tab[selected="true"] stack.tab-stack vbox.tab-background {
+  background: #ffffff22 !important;
+}
+
+/*hover tab*/
+tab.tabbrowser-tab:hover stack.tab-stack vbox.tab-background {
+  background: #ffffff22 !important;
+}
+
+/*tab selection*/
+tab.tabbrowser-tab[pending="true"] {
+  color: #ffffffcc !important;
+}
+
+/*hibernated*/
+tab.tabbrowser-tab stack.tab-stack vbox.tab-background {
+  background: transparent !important;
+}
+
+/*bookmarks*/
+toolbar {
+  background: transparent !important;
+}
+
+/*idk*/
+#nav-bar {
+  /* background: var(--bg) !important; */
+  background: transparent !important;
+}
+
+/*idk but keep*/
+#navigator-toolbox {
+  background: transparent !important;
+  border: none !important;
+}
+
+/*urlbar*/
+#urlbar-background {
+  background: #00000055 !important;
+}
+
+/*suggestions dropdown*/
+#urlbar:is([open]) hbox#urlbar-background {
+  /*   background: #42414d !important; */
+}
+
+/*little contextual buttons at left of urlbar*/
+#urlbar box#identity-box box {
+  background: inherit !important;
+}
+#urlbar box#identity-box box:hover {
+  background: #ffffff22 !important;
+}
+#urlbar box#identity-box box:active {
+  background: #ffffff44 !important;
+}
+
+vbox.urlbarView {
+  background: #00000066 !important;
+}
+
+vbox.urlbarView .urlbarView-body-outer {
+  background: #00000066 !important;
+}
+
+vbox.urlbarView .urlbarView-result-menu {
+  background: #00000066 !important;
+}
+
+vbox.urlbarView hbox {
+  background: #00000066 !important;
+}
+
+/*---------- Urlbar ----------*/
+#urlbar,
+#searchbar {
+  /*   font-size: 12.5px !important; */
+}
+
+#urlbar-background {
+  /*   background: none !important; */
+  outline: none !important;
+  border: none !important;
+  border-radius: 7px !important;
+  box-shadow: none !important;
+}
+
+#urlbar-container {
+  /*   width: 27em !important; */
+  margin-inline: 4px !important;
+}
+
+#urlbar-container,
+#search-container,
+.urlbarView-row-inner,
+.permission-popup-section {
+  padding: 0 !important;
+}
+
+#searchbar,
+.urlbar-input-container {
+  background-color: var(--urlbar-background) !important;
+  padding: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 7px !important;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: var(--neptune-urlbar-hover-background) !important;
+  }
+}
+
+#urlbar[breakout] {
+  /*   height: var(--urlbar-min-height) !important; */
+}
+
+#urlbar[breakout][breakout-extend] {
+  left: 0 !important;
+  width: 100% !important;
+
+  > .urlbar-input-container {
+    /*     height: var(--urlbar-min-height) !important; */
+  }
+}
+
+.urlbarView {
+  min-width: calc(100% + 16px) !important;
+  margin: 4px 0 0 -8px !important;
+  border: none !important;
+  border-radius: 12px !important;
+  background-color: light-dark(#f6f6f6, #323232) !important;
+  color: light-dark(#000, #fff);
+  box-shadow: var(--neptune-small-box-shadow), var(--neptune-normal-box-shadow) !important;
+}
+
+.urlbarView-results {
+  padding: 6px 8px !important;
+
+  .urlbarView-no-wrap {
+    margin-block: 2px;
+  }
+
+  .urlbarView-action {
+    margin-inline-end: 6px;
+  }
+
+  &[wrap] > .urlbarView-row[has-url] > .urlbarView-row-inner {
+    > .urlbarView-no-wrap {
+      max-width: 66% !important;
+    }
+
+    > .urlbarView-url {
+      max-width: 34% !important;
+      margin: 0 !important;
+    }
+  }
+
+  .urlbarView[noresults] > .urlbarView-body-outer > .urlbarView-body-inner > & {
+    padding: 0 !important;
+  }
+}
+
+.urlbarView-row {
+  border: 1px solid transparent !important;
+  border-radius: 7px !important;
+
+  &[row-selectable]:not([selected]):hover {
+    color: var(--urlbarView-highlight-color);
+
+    .urlbarView-url {
+      color: inherit !important;
+    }
+  }
+
+  &:not([type="tip"], [type="dynamic"]) {
+    :root:not([uidensity="compact"]) & {
+      height: 22px;
+      min-height: 22px !important;
+    }
+  }
+
+  &[type="tip"] {
+    padding: 0 !important;
+
+    > .urlbarView-row-inner,
+    .urlbarView-results[wrap] > & > .urlbarView-button {
+      margin: 0 !important;
+    }
+  }
+
+  &[rich-suggestion][type="search"] {
+    :root:not([uidensity="compact"]) & {
+      min-height: 32px !important;
+    }
+  }
+
+  &[rich-suggestion] > .urlbarView-row-inner > .urlbarView-favicon {
+    width: 24px !important;
+    height: 24px !important;
+  }
+
+  &[rich-suggestion] > .urlbarView-row-inner > .urlbarView-row-body {
+    > :is(.urlbarView-row-body-description, .urlbarView-row-body-bottom) {
+      margin-bottom: 2px;
+      color: var(--urlbarView-highlight-color);
+    }
+  }
+
+  &[label] {
+    margin-top: 14px !important;
+  }
+
+  > .urlbarView-row-inner > .urlbarView-no-wrap > .urlbarView-favicon {
+    width: 14px !important;
+    height: 14px !important;
+
+    .urlbarView-row:hover & {
+      fill: var(--urlbarView-highlight-color);
+    }
+  }
+
+  &[dynamicType="onboardTabToSearch"] > .urlbarView-row-inner {
+    height: 34px !important;
+    min-height: 34px !important;
+
+    > .urlbarView-no-wrap > .urlbarView-favicon {
+      height: 16px !important;
+      min-width: 16px !important;
+    }
+  }
+
+  &:is([type="switchtab"], [type="remotetab"], [type="clipboard"]) {
+    > .urlbarView-row-inner > .urlbarView-no-wrap > .urlbarView-action {
+      padding: 1px 6px !important;
+      background-color: var(--neptune-urlbar-View-switch-background) !important;
+      color: var(--urlbarView-highlight-color) !important;
+    }
+  }
+}
+
+.urlbarView-button {
+  background-color: transparent !important;
+  outline: none !important;
+
+  .urlbarView-row:is([row-selectable]:hover, [selected]) > &:not(:hover, [open]) {
+    color: var(--urlbarView-highlight-color) !important;
+    background-color: transparent !important;
+  }
+
+  &:is(:hover, [open]) {
+    color: var(--neptune-urlbar-View-switch-background) !important;
+    background-color: transparent !important;
+  }
+
+  &:not(:empty):not(.urlbarView-button-menu) {
+    color: light-dark(#000, #fff) !important;
+
+    &:hover {
+      color: var(--neptune-urlbar-View-switch-background) !important;
+    }
+  }
+}
+
+#urlbar .search-one-offs {
+  padding: 0 6px 6px !important;
+  background-color: light-dark(#f6f6f6, #323232);
+  border-top: 1px solid var(--neptune-urlbar-border-color);
+}
+
+#urlbar .searchbar-engine-one-off-item {
+  height: 22px !important;
+  min-width: 22px !important;
+  margin-left: 4px !important;
+
+  &:is(:not([selected]):hover, [selected]) {
+    color: var(--urlbarView-highlight-color) !important;
+  }
+}
+
+#urlbar .search-panel-header {
+  min-height: 22px !important;
+}
+
+#identity-popup,
+#permission-popup,
+#protections-popup {
+  --popup-width: 24em !important;
+}
+
+#identity-permission-box,
+#notification-popup-box,
+#tracking-protection-icon-container {
+  margin-inline-start: calc(-12px - 2 * var(--urlbar-icon-padding));
+  opacity: 0;
+  transition: 0.2s ease;
+
+  &:is(.urlbar-input-container:hover &, [open]) {
+    opacity: 1;
+    margin-inline-start: 0;
+  }
+}
+
+#notification-popup-box {
+  height: auto !important;
+}
+
+#identity-box {
+  margin: 0 !important;
+  fill-opacity: 0.5 !important;
+}
+
+#urlbar:not(.searchButton)
+  > .urlbar-input-container
+  > #identity-box[pageproxystate="invalid"]
+  > .identity-box-button,
+#identity-box[pageproxystate="valid"] > .identity-box-button,
+#urlbar-label-box {
+  background: none !important;
+  padding-inline: 6px 4px !important;
+}
+
+#identity-box[pageproxystate="valid"] > .identity-box-button {
+  &:hover:not([open]) {
+    fill-opacity: 0.9;
+  }
+
+  &:is(:hover:active, [open]) {
+    fill-opacity: 1;
+  }
+}
+
+.urlbar-page-action,
+.urlbar-go-button,
+.search-go-button {
+  background: none !important;
+  color: color-mix(in srgb, currentColor 50%, transparent) !important;
+
+  &:not([disabled]):hover {
+    color: color-mix(in srgb, currentColor 85%, transparent) !important;
+  }
+
+  &:not([disabled])[open],
+  &:not([disabled]):hover:active {
+    color: currentColor !important;
+  }
+}
+
+.urlbar-page-action {
+  margin-inline-end: calc(-16px - 2 * var(--urlbar-icon-padding));
+  opacity: 0;
+  transition: 0.2s ease;
+
+  &:is(.urlbar-input-container:hover &, [open]) {
+    opacity: 1;
+    margin-inline-end: 0;
+  }
+}
+
+#urlbar-zoom-button {
+  font-family: JetBrains Mono;
+  background-color: transparent !important;
+  margin-inline: 2px !important;
+  padding: 2px !important;
+}
+
+#reader-mode-button {
+  margin-right: -2px !important;
+}
+
+#urlbar-search-mode-indicator,
+#urlbar-label-box {
+  background-color: var(--neptune-urlbar-View-switch-background) !important;
+  border-radius: 6px !important;
+  margin-block: 7px !important;
+  font-size: 0.85em;
+  color: var(--urlbarView-highlight-color) !important;
+}
+
+#urlbar-search-mode-indicator-title {
+  margin-bottom: 2px;
+}
+
+#urlbar-search-mode-indicator-close,
+.sharing-icon,
+#identity-icon,
+#permissions-granted-icon,
+#tracking-protection-icon,
+#tracking-protection-icon-box,
+#blocked-permissions-container > .blocked-permission-icon {
+  width: 12px !important;
+  height: 12px !important;
+}
+
+:root:-moz-window-inactive #searchbar,
+:root:-moz-window-inactive .urlbar-input-container {
+  background-color: var(--neptune-inactive-urlbar-background) !important;
 }
