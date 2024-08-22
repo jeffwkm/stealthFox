@@ -1,5 +1,5 @@
 :root {
-  --wide-tab-width: 500px;
+  --wide-tab-width: 350px;
   --thin-tab-width: 35px;
   --sidebar-background: #2b2a33;
   /*   --sidebar-background: #101010; */
@@ -8,7 +8,6 @@
 #sidebar-box>#browser,
 #webextpanels-window {
   background: var(--sidebar-background) !important;
-
 }
 
 /*Collapse in default state and add transition*/

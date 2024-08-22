@@ -1,9 +1,9 @@
 @import url("sidebar.css");
 
 :root {
-  --bg: #181818a8;
+  --bg: #00000072;
   --toolbar-field-focus-border-color: transparent !important;
-  --urlbar-background-color: #00000055;
+  --urlbar-background-color: #00000069;
   --tabpanel-background-color: var(--bg) !important;
   --urlbar-min-height: 40px;
 }
@@ -289,10 +289,6 @@ toolbar {
 }
 
 /*urlbar*/
-#urlbar-background {
-  background: #00000055 !important;
-}
-
 /*suggestions dropdown*/
 #urlbar:is([open]) hbox#urlbar-background {
   /*   background: #42414d !important; */
